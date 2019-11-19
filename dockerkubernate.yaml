@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: samedaydelivery
+metadata:
+  name: demo-samedaydelivery
+  labels:
+    app: demo
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: demo
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: demo-v3
+  labels:
+    app: demo
+    version: v3
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: demo
+        version: v3
+    spec:
+      containers:
+        - name: webserver
+          image: ajayk333/samedaydelivery
+          resources:
+            requests:
+              cpu: "100m"
+          imagePullPolicy: IfNotPresent #Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: VERSION
+              value: "v3"
+            - name: METADATA
+              value: "dev"
