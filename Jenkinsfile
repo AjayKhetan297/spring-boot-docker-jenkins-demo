@@ -3,7 +3,7 @@ pipeline {
     registry = "gustavoapolinario/docker-test"
     registryCredential = 'docker-hub'
     dockerImage = ''
-     EMAIL_TO = 'akhetan@.com'
+     EMAIL_TO = 'akhetan@nisum.com'
   }
   agent any
 
