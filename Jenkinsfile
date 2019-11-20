@@ -3,11 +3,9 @@ pipeline {
     registry = "gustavoapolinario/docker-test"
     registryCredential = 'docker-hub'
     dockerImage = ''
+     EMAIL_TO = 'akhetan@.com'
   }
   agent any
-  environment {
-            EMAIL_TO = 'akhetan@nisum.com'
-        }
 
   stages {
     stage('Cloning Git') {
