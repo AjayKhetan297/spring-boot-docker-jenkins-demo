@@ -16,17 +16,18 @@ pipeline {
             ])
      }
     }
-
     stage('Gradle Build') {
    		steps{
    			script{
         	  bat 'gradlew.bat clean build'
     		  }
+    		}
+    		
 }
     stage('Building image') {
       steps{
         script {
-          dockerImage =  docker.build("ajayk333/samedaydelivery:$BUILD_NUMBER")
+          dockerImage =  docker.build("ajayk333/samedaydelivery")
         }
       }
     }
@@ -35,7 +36,7 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
-       }
+          }
         }
       }
     }
