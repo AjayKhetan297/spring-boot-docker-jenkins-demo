@@ -16,17 +16,23 @@ pipeline {
             ])
      }
     }
+    
+    stage ('shell executions'){
+    steps {
+     sh 'echo $BUILD_NUMBER'
+    }
+}
+    
     stage('Gradle Build') {
    		steps{
    			script{
         	  bat 'gradlew.bat clean build'
     		  }
-    		}
 }
     stage('Building image') {
       steps{
         script {
-          dockerImage =  docker.build("ajayk333/samedaydelivery")
+          dockerImage =  docker.build("ajayk333/samedaydelivery:$BUILD_NUMBER")
         }
       }
     }
@@ -43,3 +49,6 @@ pipeline {
   }
 
 }
+
+
+
