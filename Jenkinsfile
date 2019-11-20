@@ -19,9 +19,11 @@ pipeline {
     
     stage ('shell executions'){
     steps {
-     sh 'echo $BUILD_NUMBER'
-    }
-}
+    	script{
+     		sh 'echo $BUILD_NUMBER'
+     		}
+    	}
+	}
     
     stage('Gradle Build') {
    		steps{
@@ -46,7 +48,7 @@ pipeline {
       }
     }
 
-  }
+}
 
 
 
