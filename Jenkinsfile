@@ -16,6 +16,17 @@ pipeline {
             ])
      }
     }
+    
+
+	stage('shell executions') {
+   		steps{
+   			script{
+        	   sh 'echo $BUILD_NUMBER'
+    		  }
+    		}
+    		
+}
+
     stage('Gradle Build') {
    		steps{
    			script{
