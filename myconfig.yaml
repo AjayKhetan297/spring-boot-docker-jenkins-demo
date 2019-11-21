@@ -17,6 +17,8 @@ spec:
       - name: samedaydelivery
         image: ajayk333/samedaydelivery
         resources:
+          requests:
+            memory: "250Mi"
           limits:
             memory: "500Mi"
         ports:
