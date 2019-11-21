@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samedaydelivery
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: samedaydelivery
+  template:
+    metadata:
+      labels:
+        run: samedaydelivery
+    spec:
+      containers:
+      - name: samedaydelivery
+        image: https://hub.docker.com/r/ajayk333/sdd
+        resources:
+          limits:
+            memory: "500Mi"
+        ports:
+          - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bootapp-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    run: samedaydelivery
+  ports:
+  - port: 8081
+    targetPort: 8081
+    nodePort: 30003
