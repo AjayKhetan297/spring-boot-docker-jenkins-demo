@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: samedaydelivery
-        image: https://hub.docker.com/r/ajayk333/sdd
+        image: ajayk333/samedaydelivery
         resources:
           limits:
             memory: "500Mi"
