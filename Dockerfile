@@ -1,8 +1,6 @@
 # Start with a base image containing Java runtime
 FROM openjdk:8
 
-EXPOSE 8080
-
 ARG JAR_FILE=build/libs/samedaydelivery-1.jar
 
 ADD ${JAR_FILE} samedaydelivery-1.jar

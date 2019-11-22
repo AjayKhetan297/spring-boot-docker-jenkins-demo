@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "gustavoapolinario/docker-test"
+    registry = "ajayk333/samedaydelivery"
     registryCredential = 'docker-hub'
     dockerImage = ''
      EMAIL_TO = 'akhetan@nisum.com'
@@ -30,7 +30,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage =  docker.build("ajayk333/samedaydelivery")
+          dockerImage =  docker.build registry
         }
       }
     }
